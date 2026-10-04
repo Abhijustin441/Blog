@@ -1,0 +1,23 @@
+{% extends 'blog/base_general.html' %}
+
+{% block content %}
+<h1>{{ author.username }}</h1>
+<hr>
+ {% if author.bio %}
+    <p>{{ author.bio }}</p>
+ {% endif %}
+
+{% if author.posts.all %}
+    <h2>Posts by {{ author.username }}</h2>
+    <ul class="plain-list">
+        {% for post in author.posts.all %}
+        <li>
+            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+            - {{ post.date_posted |date:"d M Y" }}
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No posts available for this author.</p>
+{% endif %}
+{% endblock %}

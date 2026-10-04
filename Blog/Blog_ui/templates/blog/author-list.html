@@ -1,0 +1,32 @@
+{% extends 'blog/base_general.html' %}
+
+{% block content %}
+<h1>Bloggers</h1>
+{% if author_list %}
+    <ul class="plain-list">
+        {% for author in author_list %}
+        <li>
+            <a href="{{ author.get_absolute_url }}">{{ author }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No bloggers available.</p>
+{% endif %}
+
+ {% if is_paginated %}
+
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+                <a href="?page ={{page_obj.previous_number}}">Previous</a>
+            {% endif %}
+            <span class="current">
+                Page  {{page_obj.number}} of {{page_obj.paginator.num_pages}}
+
+            </span>
+            {% if page_obj.has_next %}
+                <a href="?page={{page_obj.next_page_number}}">Next</a>
+            {% endif %}
+        </div>
+    {% endif %}
+{% endblock %}

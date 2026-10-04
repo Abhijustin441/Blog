@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Blog Project{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'Blog_ui/css/styles.css' %}">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <div class="site-title"><a href="{% url 'Blog_ui:index' %}">The Blog</a></div>
+
+      <ul class="nav-group">
+        <li><a href="{% url 'Blog_ui:post-list' %}">All posts</a></li>
+        <li><a href="{% url 'Blog_ui:author-list' %}">All bloggers</a></li>
+      </ul>
+
+      <hr>
+
+      {% if user.is_authenticated %}
+        <div class="user-badge">Signed in as {{ user.first_name }} {{user.last_name }}</div>
+        <form class="logout-form" method="post" action="{% url 'logout' %}">
+          {% csrf_token %}
+          <button type="submit">Logout</button>
+        </form>
+      {% else %}
+        <ul class="nav-group">
+          <li><a href="{% url 'login' %}">Login</a></li>
+        </ul>
+      {% endif %}
+    </nav>
+
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+</body>
+</html>

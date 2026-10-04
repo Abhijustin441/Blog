@@ -1,0 +1,15 @@
+{% extends "blog/base_general.html" %}
+
+{% block title% %}Add Comment {% endblock %}
+
+{% block content %}
+
+    <p> Commenting on <a href=" {{ post.get_absolute_url }}" >{{ post.title }}</a></p>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn">Submit Comment</button>
+    </form>
+
+{% endblock %}

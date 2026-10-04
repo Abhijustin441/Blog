@@ -1,0 +1,31 @@
+{% extends 'blog/base_general.html' %}
+{% block title %}{{ post.title }}{% endblock %}
+{% block content %}
+  <h1>{{ post.title }}</h1>
+  <p class="post-detail-meta">
+    By <a href="{{ post.author.get_absolute_url }}">{{ post.author }}</a>
+    — {{ post.created_at|date:"d M Y" }}
+  </p>
+  <div class="post-content">{{ post.content|linebreaks }}</div>
+
+  <hr>
+  <h2>Comments</h2>
+  {% if post.comments.all %}
+    <ul class="plain-list">
+      {% for comment in post.comments.all %}
+        <li class="comment">
+          <div class="comment-meta"><strong>{{ comment.author.first_name }}</strong> — {{ comment.created_at|date:"d M Y H:i" }}</div>
+          <div>{{ comment.description|linebreaks }}</div>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No comments yet.</p>
+  {% endif %}
+
+  {% if user.is_authenticated %}
+    <p><a href="{% url 'Blog_ui:comment-create' post.id %}" class="btn">Add a comment</a></p>
+  {% else %}
+    <p><a href="{% url 'login' %}?next={{ post.get_absolute_url }}">Log in to add a comment</a></p>
+  {% endif %}
+{% endblock %}

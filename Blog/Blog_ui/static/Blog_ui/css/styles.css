@@ -1,0 +1,205 @@
+/* ---------- Reset & base ---------- */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: #1f2328;
+  background: #f6f7f9;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: Georgia, 'Times New Roman', serif;
+  line-height: 1.25;
+  margin-top: 0;
+}
+
+h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+h2 { font-size: 1.3rem; margin-top: 2rem; }
+
+a {
+  color: #2454ff;
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+/* ---------- Page layout ---------- */
+.layout {
+  display: flex;
+  max-width: 1100px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  padding: 2rem 1.5rem;
+  border-right: 1px solid #e3e5e8;
+  background: teal;
+}
+
+.site-title {
+  font-family: Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 1.75rem;
+}
+.site-title a { color: #1f2328; }
+
+.nav-group {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.75rem 0;
+}
+.nav-group li { margin-bottom: 0.65rem; }
+.nav-group a {
+  color: #1f2328;
+  font-weight: 500;
+}
+.nav-group a:hover { color: #2454ff; }
+
+.sidebar hr {
+  border: none;
+  border-top: 1px solid #e3e5e8;
+  margin: 1.5rem 0;
+}
+
+.user-badge {
+  font-size: 0.85rem;
+  color: #032261;
+  margin-bottom: 0.5rem;
+}
+
+.logout-form button {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  font-weight: 500;
+  color: #1f2328;
+  cursor: pointer;
+}
+.logout-form button:hover { color: #2454ff; text-decoration: underline; }
+
+main {
+  flex: 1;
+  padding: 2.5rem 3rem;
+  background: #f6f7f9;
+}
+
+/* ---------- Post list ---------- */
+.post-card {
+  background: #fff;
+  border: 1px solid #e3e5e8;
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+  list-style: none;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+.post-card:hover {
+  box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+  transform: translateY(-1px);
+}
+.post-card .post-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+.post-card .post-meta {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-top: 0.25rem;
+}
+
+ul.post-list, ul.plain-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+ul.plain-list li {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #e3e5e8;
+}
+ul.plain-list li:last-child { border-bottom: none; }
+
+/* ---------- Pagination ---------- */
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+}
+.pagination a {
+  padding: 0.4rem 0.9rem;
+  border: 1px solid #d0d3d8;
+  border-radius: 6px;
+  color: #1f2328;
+}
+.pagination a:hover {
+  background: #fff;
+  text-decoration: none;
+  border-color: #2454ff;
+}
+.pagination span { color: #6b7280; }
+
+/* ---------- Post detail ---------- */
+.post-detail-meta {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+.post-content {
+  font-size: 1.05rem;
+  margin-bottom: 2rem;
+}
+
+.comment {
+  padding: 0.9rem 0;
+  border-bottom: 1px solid #e3e5e8;
+}
+.comment:last-child { border-bottom: none; }
+.comment-meta {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+.comment-meta strong { color: #1f2328; }
+
+/* ---------- Forms ---------- */
+form p { margin-bottom: 1rem; }
+label { display: block; margin-bottom: 0.3rem; font-weight: 500; font-size: 0.9rem; }
+input[type="text"], input[type="password"], input[type="email"], textarea {
+  width: 100%;
+  max-width: 420px;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid #d0d3d8;
+  border-radius: 6px;
+  font: inherit;
+}
+textarea { resize: vertical; min-height: 100px; }
+
+.btn {
+  display: inline-block;
+  background: #2454ff;
+  color: #fff;
+  border: none;
+  padding: 0.55rem 1.3rem;
+  border-radius: 6px;
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
+.btn:hover { background: #1b40cc; text-decoration: none; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 700px) {
+  .layout { flex-direction: column; }
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #e3e5e8;
+  }
+  main { padding: 1.5rem; }
+}
