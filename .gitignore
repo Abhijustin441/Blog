@@ -12,3 +12,5 @@ Blog/.env
 .idea/
 .DS_Store
 Thumbs.db
+
+Blog/staticfiles/

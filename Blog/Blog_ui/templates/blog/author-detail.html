@@ -8,12 +8,12 @@
  {% endif %}
 
 {% if author.posts.all %}
-    <h2>Posts by {{ author.username }}</h2>
+    <h2>Posts by {{ author.first_name }} {{ author.last_name }}</h2>
     <ul class="plain-list">
         {% for post in author.posts.all %}
         <li>
             <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-            - {{ post.date_posted |date:"d M Y" }}
+            - {{ post.created_at |date:"d M Y" }}
         </li>
         {% endfor %}
     </ul>
